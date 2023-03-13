@@ -54,5 +54,6 @@
 
 (package! transpose-frame)
 
-;; (package! tree-sitter)
-;; test change
+;; add tree sitter
+(package! tree-sitter)
+(package! tree-sitter-langs)

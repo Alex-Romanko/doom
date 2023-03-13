@@ -119,3 +119,9 @@
 
 (define-key evil-visual-state-map (kbd "C-<return>") #'ess-eval-region-or-line-visibly-and-step)
 
+;; add tree sitter
+(use-package! tree-sitter
+  :config
+  (require 'tree-sitter-langs)
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
