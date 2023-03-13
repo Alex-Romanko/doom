@@ -62,3 +62,7 @@
 
 ;; CSV view mode
 (package! csv-mode)
+
+;; Rkarkdown mode
+(package! polymode)
+(package! poly-markdown)
