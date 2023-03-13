@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: comment
+# key: .
+# --
+
+###${1:$(make-string (length yas/text) ?#)}###
+## $1 ##
+###${1:$(make-string (length yas/text) ?#)}###

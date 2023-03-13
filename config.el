@@ -90,6 +90,24 @@
 ;; rainbow parentheses everywhere
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+(use-package rainbow-mode
+  :ensure t
+  :config
+  (rainbow-mode t))
+
+(global-visual-line-mode 1)
+(global-hl-line-mode 1)
+(global-prettify-symbols-mode 1)
+
+(global-set-key (kbd "<f9>") 'tabbar-mode)
+(global-set-key (kbd "<f10>") 'menu-bar-mode)
+(global-set-key (kbd "<f11>") 'toggle-frame-fullscreen)
+(global-set-key (kbd "<f12>") 'tool-bar-mode)
+
+;;;; csv-mode
+(use-package csv-mode
+  :mode ("\\.[Cc][Ss][Vv]\\'" . csv-mode))
+
 ;; map keys for autocompleat in company plugin
 ;; unbind <return> and bind complete to <C-SPC> and <C-return>
 (with-eval-after-load 'company
@@ -116,3 +134,8 @@
   (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
   (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode)))
 
+ (add-hook 'markdown-mode-hook
+          #'(lambda() (set (make-local-variable 'tree-sitter-hl-mode) nil)))
+
+;; togle high light mode
+(global-set-key (kbd "C-c t") 'tree-sitter-hl-mode)
