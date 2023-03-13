@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Alex Romanko"
+      user-mail-address "alex@romankot.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -32,16 +32,6 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-
-;;(setq doom-theme 'doom-gruvbox)
-;;(setq doom-theme 'doom-gruvbox)
-;;(setq doom-theme 'doom-gruvbox)
-;;(setq doom-theme 'doom-gruvbox)
-;;(setq doom-theme 'doom-gruvbox)
-;;(setq doom-theme 'doom-gruvbox)
-;;(setq doom-theme 'doom-gruvbox)
-;;(setq doom-theme 'doom-vibrant)
-
 
 ;;(setq doom-theme 'doom-one) ;; default works well
 ;;(setq doom-theme 'doom-xcode)
@@ -88,27 +78,20 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-
-;(use-package reverse-im
-;     :custom
-;     (reverse-im-input-methods ("russian-computer"))
-;     :config
-;     (reverse-im-mode t))
-
+;; Add support of Russian keybord keys for evil/emacs commands
 (use-package! reverse-im
   :config
   (reverse-im-activate "russian-computer"))
 
+;; set font
 (setq doom-font (font-spec :family "Droid Sans Mono" :size 14 :weight 'light)
       doom-variable-pitch-font (font-spec :family "Noto Serif" :size 16))
 
-
+;; rainbow parentheses everywhere
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-
 
 ;; map keys for autocompleat in company plugin
 ;; unbind <return> and bind complete to <C-SPC> and <C-return>
-
 (with-eval-after-load 'company
   (define-key company-active-map (kbd "<return>") nil)
   (define-key company-active-map (kbd "RET") nil)
@@ -116,7 +99,6 @@
   (define-key company-active-map (kbd "<C-return>") #'company-complete-selection))
 
 ;; map key for eval multiple lines in ess in visual mode
-
 (define-key evil-visual-state-map (kbd "C-<return>") #'ess-eval-region-or-line-visibly-and-step)
 
 ;; add tree sitter
@@ -126,5 +108,11 @@
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
-;; add e-markdown support
-(add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
+;; add rmarkdown support
+(use-package poly-markdown)
+(use-package poly-R	    ;; FIXME tree-sitter doesn't work in .md mode
+  :config                   ;;       should be disabled
+  (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+  (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+  (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode)))
+
