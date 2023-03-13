@@ -48,6 +48,8 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
+;; enter commands using Russian keyboard
 (package! reverse-im)
 
 (package! rainbow-delimiters)
@@ -57,3 +59,6 @@
 ;; add tree sitter
 (package! tree-sitter)
 (package! tree-sitter-langs)
+
+;; CSV view mode
+(package! csv-mode)
