@@ -57,8 +57,8 @@
 (package! transpose-frame)
 
 ;; add tree sitter
-(package! tree-sitter)
-(package! tree-sitter-langs)
+;; (package! tree-sitter)
+;; (package! tree-sitter-langs)
 
 ;; CSV view mode
 (package! csv-mode)
@@ -66,3 +66,5 @@
 ;; Rkarkdown mode
 (package! polymode)
 (package! poly-markdown)
+
+(package! quarto-mode)

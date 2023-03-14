@@ -32,9 +32,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
+;; (setq doom-theme 'doom-one)
 
-;;(setq doom-theme 'doom-one) ;; default works well
-;;(setq doom-theme 'doom-xcode)
 (setq doom-theme 'doom-gruvbox)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -42,7 +41,7 @@
 (setq display-line-numbers-type `relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
-;; chage `org-directory'. It must be set before org loads!
+;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
 
@@ -126,6 +125,21 @@
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
+;; togle high light mode
+(global-set-key (kbd "C-c t") 'tree-sitter-hl-mode)
+
+;; add Quarto support
+;; load the library
+(require 'quarto-mode)
+
+;; Note that the following is not necessary to run quarto-mode in .qmd files! It's merely illustrating
+;; how to associate different extensions to the mode.
+;; (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-quarto-mode))
+;;
+;; Or, with use-package:
+;; (use-package quarto-mode
+;;   :mode (("\\.Rmd" . poly-quarto-mode)))
+
 ;; add rmarkdown support
 (use-package poly-markdown)
 (use-package poly-R	    ;; FIXME tree-sitter doesn't work in .md mode
@@ -133,9 +147,3 @@
   (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
   (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
   (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode)))
-
- (add-hook 'markdown-mode-hook
-          #'(lambda() (set (make-local-variable 'tree-sitter-hl-mode) nil)))
-
-;; togle high light mode
-(global-set-key (kbd "C-c t") 'tree-sitter-hl-mode)
