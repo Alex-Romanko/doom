@@ -36,6 +36,7 @@
 
 (setq doom-theme 'doom-gruvbox)
 
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type `relative)
@@ -125,7 +126,7 @@
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
-;; togle high light mode
+;; togle highlight mode
 (global-set-key (kbd "C-c t") 'tree-sitter-hl-mode)
 
 ;; add Quarto support
@@ -146,4 +147,27 @@
   :config                   ;;       should be disabled
   (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
   (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
-  (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode)))
+  (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
+  (add-to-list 'auto-mode-alist '("\\.Rmarkdown" . poly-markdown+r-mode)))
+
+;; enable autosave
+;; (setq auto-save-default t)
+;; (setq auto-save-visited-mode t)
+
+
+(global-undo-tree-mode)
+
+;; tab bar mode
+(setq tab-bar-new-tab-choice "*doom*")
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-tab-hints t)
+(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+
+
+(global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
+(global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
+;; (global-set-key (kbd "s-t") 'tab-bar-new-tab)
+(global-set-key (kbd "s-t") 'tab-new)
+(global-set-key (kbd "s-w") 'tab-bar-close-tab)
+
+

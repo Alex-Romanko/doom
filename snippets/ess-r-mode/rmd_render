@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: rmd_render
+# uuid:
+# key: rmd
+# condition: t
+# --
+
+rmarkdown::render("./$0")

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: R code chunk
+# key: rcc
+# --
+
+\`\`\`{r ${1:ChunkName}}
+$0
+\`\`\`

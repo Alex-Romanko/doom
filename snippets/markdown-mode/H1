@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: H1
+# key: 1!
+# --
+
+# ${1:name}
+
+$0

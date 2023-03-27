@@ -56,10 +56,6 @@
 
 (package! transpose-frame)
 
-;; add tree sitter
-;; (package! tree-sitter)
-;; (package! tree-sitter-langs)
-
 ;; CSV view mode
 (package! csv-mode)
 
@@ -68,3 +64,5 @@
 (package! poly-markdown)
 
 (package! quarto-mode)
+
+(package! undo-tree)
